@@ -12,11 +12,11 @@ def test_day02():
     assert day02.scan23('abcdee') == (1, 0)
     assert day02.scan23('ababab') == (0, 1)
 
-    assert day02.run_day02(['abcdef',
-                           'bababc',
-                           'abbcde',
-                           'abcccd',
-                           'aabcdd',
-                           'abcdee',
-                           'ababab',
-                           ]) == 12
+    assert day02.correctIDs(['abcde',
+                                'fghij',
+                                'klmno',
+                                'pqrst',
+                                'fguij',
+                                'axcye',
+                                'wvxyz',
+                                 ]) == 'fgij'
