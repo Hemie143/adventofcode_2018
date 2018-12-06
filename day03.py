@@ -20,11 +20,14 @@ def fabric_overlap(grid):
             overlap += 1
     return overlap
 
-def test(claims):
-    for k, cell in grid.items():
-        print(f'{k}:{cell}')
-        # pass
-    return
+def find_claim(grid):
+    elves_all = set()
+    for elves_cell in grid.values():
+        elves_all.update(elves_cell)
+    for elves_cell in grid.values():
+        if len(elves_cell) > 1:
+            elves_all.difference_update(elves_cell)
+    return elves_all.pop()
 
 
 if __name__ == '__main__':
@@ -32,10 +35,13 @@ if __name__ == '__main__':
         claims = f.readlines()
     grid = load_grid(claims)
     overlap = fabric_overlap(grid)
-    test(claims)
+    id_no_overlap = find_claim(grid)
     print(f'Day 03 - Part 1 - Answer: {overlap}')
+    print(f'Day 03 - Part 2 - Answer: {id_no_overlap}')
 
+    '''
     print(load_grid(['#1 @ 1,3: 4x4',
                                  '#2 @ 3,1: 4x4',
                                  '#3 @ 5,5: 2x2']))
+    '''
 
