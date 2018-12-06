@@ -1,5 +1,6 @@
 import re
 
+
 def load_grid(claims):
     grid = {}
     for c in claims:
@@ -13,12 +14,14 @@ def load_grid(claims):
                     grid[(i, j)] = elves
     return grid
 
+
 def fabric_overlap(grid):
     overlap = 0
     for elves in grid.values():
         if len(elves) > 1:
             overlap += 1
     return overlap
+
 
 def find_claim(grid):
     elves_all = set()
@@ -39,9 +42,4 @@ if __name__ == '__main__':
     print(f'Day 03 - Part 1 - Answer: {overlap}')
     print(f'Day 03 - Part 2 - Answer: {id_no_overlap}')
 
-    '''
-    print(load_grid(['#1 @ 1,3: 4x4',
-                                 '#2 @ 3,1: 4x4',
-                                 '#3 @ 5,5: 2x2']))
-    '''
 
