@@ -15,8 +15,14 @@ def load_guards(records):
                 guards_sleeps[guard_id][i] += 1
     return guards_sleeps
 
-def find_sleepy_guard(sleeps):
+
+def find_sleepy_guard1(sleeps):
     return max(sleeps, key=lambda g: sum(sleeps[g]))
+
+
+def find_sleepy_guard2(sleeps):
+    return max(sleeps, key=lambda g: max(sleeps[g]))
+
 
 def most_sleep_minute(sleep):
     return sleep.index(max(sleep))
@@ -26,8 +32,9 @@ if __name__ == '__main__':
     with open('input04.txt') as f:
         records = f.readlines()
     sleeps = load_guards(records)
-    guard = find_sleepy_guard(sleeps)
+    guard = find_sleepy_guard1(sleeps)
     minute = most_sleep_minute(sleeps[guard])
     print(f'Day 04 - Part 1 - Answer: {guard} * {minute} = {guard * minute}')
-    # print(f'Day 04 - Part 2 - Answer: {}')
-
+    guard = find_sleepy_guard2(sleeps)
+    minute = most_sleep_minute(sleeps[guard])
+    print(f'Day 04 - Part 2 - Answer: {guard} * {minute} = {guard * minute}')

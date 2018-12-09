@@ -24,5 +24,7 @@ def sleeps():
 [1518-11-05 00:55] wakes up'''.splitlines())
 
 def test_day04(sleeps):
-    assert day04.find_sleepy_guard(sleeps) == 10
+    assert day04.find_sleepy_guard1(sleeps) == 10
     assert day04.most_sleep_minute(sleeps[10]) == 24
+    assert day04.find_sleepy_guard2(sleeps) == 99
+    assert day04.most_sleep_minute(sleeps[99]) == 45
