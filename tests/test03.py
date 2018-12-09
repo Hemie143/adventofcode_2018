@@ -10,6 +10,6 @@ def grid():
                             '#3 @ 5,5: 2x2'])
 
 
-def test_day02(grid):
+def test_day03(grid):
     assert day03.fabric_overlap(grid) == 4
     assert day03.find_claim(grid) == 3
