@@ -41,10 +41,24 @@ def find_largest_area(coords):
     counts = [sum([1 if x == i else 0 for x in grid.values()]) for i in range(len(coords)) if i not in blacklist]
     return max(counts)
 
+def find_dist_area(coords, max_dist):
+    minx, maxx, miny, maxy = find_grid_size(coords)
+    region_area = 0
+    for x in range(minx, maxx+1):
+        for y in range(miny, maxy+1):
+            dist_cumulated = 0
+            loc = (x, y)
+            for c in coords:
+                dist_cumulated += manhattan_distance(loc, c)
+            if dist_cumulated < max_dist:
+                region_area += 1
+    return region_area
+
 if __name__ == '__main__':
     with open('input06.txt') as f:
         data = f.readlines()
     coords = load_coords(data)
     area = find_largest_area(coords)
+    dist_area = find_dist_area(coords, 10000)
     print(f'Day 06 - Part 1 - Answer: {area}')
-    # print(f'Day 05 - Part 2 - Answer: {optimize(polymer)}')
+    print(f'Day 06 - Part 2 - Answer: {dist_area}')
