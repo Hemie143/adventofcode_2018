@@ -17,5 +17,5 @@ Step F must be finished before step E can begin.
 
 def test_day07(steps_deps):
     steps, deps = steps_deps
-    assert day07.find_correct_order(steps, deps) == 'CABDFE'
-
+    assert day07.time_sorting(steps, deps, 1, 0) == ('CABDFE', 21)
+    assert day07.time_sorting(steps, deps, 2, 0) == ('CABFDE', 15)
