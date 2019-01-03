@@ -9,4 +9,5 @@ def nodes():
 
 
 def test_day08(nodes):
-    assert day08.read_subnodes(iter(nodes)) == 138
+    assert day08.read_subnodes(iter(nodes))[0] == 138
+    assert day08.read_subnodes(iter(nodes))[1] == 66
