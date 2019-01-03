@@ -51,8 +51,8 @@ def time_sorting(steps, deps, num_workers=2, step_duration=0):
         seconds += 1
     return ''.join(chain), (seconds-1)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     with open('input07.txt') as f:
         data = f.readlines()
     steps, deps = load_steps(data)
@@ -60,4 +60,3 @@ if __name__ == '__main__':
     print(f'Day 07 - Part 1 - Answer: {chain}')
     chain, duration = time_sorting(steps, deps, 6, 60)
     print(f'Day 07 - Part 2 - Answer: {duration}')
-
