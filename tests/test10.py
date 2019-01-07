@@ -5,7 +5,7 @@ from adventofcode_2018 import day10
 
 @pytest.fixture
 def points():
-    return day10.load_points('''position=< 9,  1> velocity=< 0,  2>
+            return day10.load_points('''position=< 9,  1> velocity=< 0,  2>
 position=< 7,  0> velocity=<-1,  0>
 position=< 3, -2> velocity=<-1,  1>
 position=< 6, 10> velocity=<-2, -1>
