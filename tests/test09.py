@@ -8,7 +8,7 @@ def data():
     return day09.load_data('9 players; last marble is worth 25 points')
 
 
-def test_day08(data):
+def test_day09(data):
     num_players, high_marble = data
     assert day09.play(num_players, high_marble) == 32
     assert day09.play(10, 1618) == 8317
