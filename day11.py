@@ -1,3 +1,4 @@
+from collections import defaultdict
 
 
 def cell_pwr(x, y, serial):
@@ -5,8 +6,32 @@ def cell_pwr(x, y, serial):
     power = (int(((rackId * y + serial) * rackId / 100)) % 10) - 5
     return power
 
+
+def generate_grid(grid_size, serial):
+    grid_power = defaultdict(int)
+    for x in range(1, grid_size + 1):
+        rackId = x + 10
+        for y in range(1, grid_size + 1):
+            grid_power[(x, y)] = (int(((rackId * y + serial) * rackId / 100)) % 10) - 5
+    return grid_power
+
+'''
 def square_pwr(grid_power, x, y, select_size):
     return sum([grid_power[x + i][y + j] for i in range(select_size) for j in range(select_size)])
+'''
+
+def square_pwr(grid_power, x, y, select_size):
+    return sum([grid_power[(x + i, y + j)] for i in range(select_size) for j in range(select_size)])
+
+
+def select_square(grid_power, grid_size, select_size):
+    square_powers = []
+    for x in range(1, grid_size - select_size + 1):
+        for y in range(1, grid_size - select_size + 1):
+            sp = square_pwr(grid_power, x, y, select_size)
+            square_powers.append((sp, x, y))
+    return max(square_powers)
+
 
 def select_cell(grid_size, select_size, serial):
     grid_power = [[0] * grid_size for _ in range(grid_size)]
@@ -33,9 +58,12 @@ def select_cellsize(grid_size, serial):
 
 if __name__ == '__main__':
     with open('input11.txt') as f:
-        serial = f.read()
+        serial = int(f.read())
 
     # TODO: generate grid only once
+    grid_size = 300
+    select_size = 3
+    # grid_power = generate_grid(grid_size, serial)
     x, y, _ = select_cell(300, 3, int(serial))
     print(f'Day 11 - Part 1 - Answer: {x}, {y}')
 
