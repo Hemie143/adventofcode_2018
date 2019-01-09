@@ -32,6 +32,14 @@ def select_square(grid_power, grid_size, select_size):
             square_powers.append((sp, x, y))
     return max(square_powers)
 
+def select_squaresize(grid_power, grid_size):
+    square_powers = []
+    # https://en.wikipedia.org/wiki/Summed-area_table
+    for size in range(1, grid_size):
+        print(f'size: {size}')
+        sp = select_square(grid_power, grid_size, size)
+        square_powers.append((sp, size))
+    return max(square_powers)
 
 def select_cell(grid_size, select_size, serial):
     grid_power = [[0] * grid_size for _ in range(grid_size)]
@@ -60,11 +68,11 @@ if __name__ == '__main__':
     with open('input11.txt') as f:
         serial = int(f.read())
 
-    # TODO: generate grid only once
     grid_size = 300
     select_size = 3
-    # grid_power = generate_grid(grid_size, serial)
-    x, y, _ = select_cell(300, 3, int(serial))
+    grid_power = generate_grid(grid_size, serial)
+    _, x, y = select_square(grid_power, grid_size, select_size)
     print(f'Day 11 - Part 1 - Answer: {x}, {y}')
-
+    result = select_squaresize(grid_power, grid_size)
+    print(f'Day 11 - Part 2 - Answer: {result}')
 
