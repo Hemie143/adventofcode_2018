@@ -28,6 +28,7 @@ if __name__ == '__main__':
     initial_state, rules = load_data(data)
     state, pot_sum = life(initial_state, rules, 20)
     print(f'Day 12 - Part 1 - Answer: {pot_sum}')
+    print(f'Day 12 - Part 1 - Answer: {pot_sum}')
     _, pot_sum_142 = life(initial_state, rules, 142)
     _, pot_sum_143 = life(initial_state, rules, 143)
     pot_sum = pot_sum_143 + (50000000000 - 143) * (pot_sum_143 - pot_sum_142)

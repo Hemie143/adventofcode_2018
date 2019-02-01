@@ -22,6 +22,6 @@ def data():
 ####. => #''')
 
 
-def test_day11(data):
+def test_day12(data):
     initial_state, rules = data
     assert day12.life(initial_state, rules, 20)[1] == 325
