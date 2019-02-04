@@ -56,6 +56,7 @@ def cycle(circuit, carts):
         last_cart = list(carts.keys())[0]
     return crash_first, last_cart
 
+
 if __name__ == '__main__':
     with open('input13.txt') as f:
         map_data = f.read()
